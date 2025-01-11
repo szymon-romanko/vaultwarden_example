@@ -1,0 +1,29 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    volumes:
+      - vaultwarden-data:/data
+
+  caddy:
+    image: caddy:latest
+    container_name: caddy
+    restart: unless-stopped
+    depends_on:
+      - vaultwarden
+    ports:
+      - "80:80"
+      - "443:443"  # if you want to listen on non-standard port, change this to "your-port:443"
+    volumes:
+      - caddy-data:/data
+      - caddy-config:/config
+      - ./Caddyfile:/etc/caddy/Caddyfile  # set your Caddyfile path here (before the colon)
+      # set your own SSL certificate paths here (before the colon)
+      - ./certs/selfsigned.crt:/etc/caddy/certs/cert.pem
+      - ./certs/selfsigned.key:/etc/caddy/certs/key.pem
+
+volumes:
+  vaultwarden-data:
+  caddy-data:
+  caddy-config:

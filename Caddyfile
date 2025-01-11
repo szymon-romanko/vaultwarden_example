@@ -1,0 +1,8 @@
+#{
+#    debug
+#}
+
+:443 {
+    tls /etc/caddy/certs/cert.pem /etc/caddy/certs/key.pem
+    reverse_proxy vaultwarden:80
+}
