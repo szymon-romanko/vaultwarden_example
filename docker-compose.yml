@@ -3,6 +3,10 @@ services:
     image: vaultwarden/server:latest
     container_name: vaultwarden
     restart: unless-stopped
+    environment:
+      SIGNUPS_DOMAINS_WHITELIST: "gmail.com"  # only allow signups from this domain
+#      SIGNUPS_VERIFY: true  # verify email addresses (requires smtp setup)
+      SHOW_PASSWORD_HINT: false  # hide password hint
     volumes:
       - vaultwarden-data:/data
 
