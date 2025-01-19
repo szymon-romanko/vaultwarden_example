@@ -11,6 +11,7 @@ Very basic example how to set up vaultwarden with caddy as reverse proxy using d
 ## Installation
 
 1. Clone repo
+
     ```shell
     git clone https://github.com/szymon-romanko/vaultwarden_example.git
     cd vaultwarden_example
@@ -19,6 +20,7 @@ Very basic example how to set up vaultwarden with caddy as reverse proxy using d
 2. Setup TLS certificates
 
    **For development** - generate self-signed certificates
+
     ```shell
     chmod u+x ./generate_certs.sh
     ./generate_certs.sh
@@ -26,6 +28,7 @@ Very basic example how to set up vaultwarden with caddy as reverse proxy using d
     ```
 
    **For production** - use your own certificates
+
     ```shell
     cp /path/to/your/cert.pem certs/cert.pem
     cp /path/to/your/key.pem certs/key.pem
@@ -33,6 +36,7 @@ Very basic example how to set up vaultwarden with caddy as reverse proxy using d
     ```
 
 3. Start services
+
     ```shell
     docker compose up -d
     ```
